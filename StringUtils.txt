@@ -1,0 +1,22 @@
+ private static List<String> strSplit(String attrValue) {
+        List<String> data = new ArrayList<>();
+
+        int index;
+        int temp = 0;
+        for (int i = 0; i < attrValue.length(); i += index) {
+            index = attrValue.indexOf(",", temp);
+            if (temp >= attrValue.length() || index > attrValue.length()) break;
+
+            if (index != -1) {
+                String value = attrValue.substring(temp, index);
+                temp = index + 1;
+                data.add(value);
+            } else {
+                String substring = attrValue.substring(temp, attrValue.length());
+                data.add(substring);
+                break;
+            }
+        }
+
+        return data;
+    }
